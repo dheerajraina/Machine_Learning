@@ -48,3 +48,29 @@ def plt_roast(X, Y):
     ax.set_ylabel("Duration \n(minutes)", size=12)
     ax.legend(loc='upper right')
     plt.show()
+
+
+def sigmoid(z):
+    """
+    Compute the sigmoid of z
+
+    Parameters
+    ----------
+    z : array_like
+        A scalar or numpy array of any size.
+
+    Returns
+    -------
+     g : array_like
+         sigmoid(z)
+    """
+    z = np.clip(z, -500, 500)           # protect against overflow
+    g = 1.0/(1.0+np.exp(-z))
+
+    return g
+
+
+def load_data1():
+    X = np.load("data/X.npy")
+    y = np.load("data/y.npy")
+    return X, y
